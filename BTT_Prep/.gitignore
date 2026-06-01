@@ -1,0 +1,5 @@
+# Source PDF (large, not needed in git)
+*.pdf
+
+# Raw extracted images (already in btt-portal/public/images/)
+extracted/

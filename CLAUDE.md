@@ -2,6 +2,36 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Collaboration preferences
+
+- **Less narration** — don't explain what you're about to do, just do it
+- **Auto-merge after green build** — run `gh pr merge --merge --delete-branch` automatically after `npm run build` passes, without waiting for user confirmation
+- **Bundle related issues** — work on 2–3 related issues per branch/PR, commit each separately, merge once at the end
+- **"go" means proceed** — single-word approvals are sufficient, no need to wait for "yes, please proceed"
+- **Bugs get a fix branch** — every bug fix follows the same branch → PR → merge flow, no exceptions even for one-liners
+- **State management hygiene** — always use separate state variables for independent form fields; never share state between sibling components unless explicitly required
+- **New projects** — whenever a new project is added to this monorepo, update the repository overview table in this file
+- **Vercel deploys** — use `vercel --prod --yes` from the project directory; always confirm with user before deploying to production
+- **Issue auto-close** — always use one `Closes #X` per line in PR descriptions (never comma-separated); GitHub only reliably auto-closes issues with the single-per-line format
+
+---
+
+## Git branching rules
+
+These apply to every project in this repo, always:
+
+1. **Never commit directly to `main`** — all changes go through a feature branch
+2. **Create and push the branch to GitHub before making any changes:**
+   ```bash
+   git checkout -b feature/your-feature-name
+   git push -u origin feature/your-feature-name
+   ```
+3. **Always state the branch name out loud** before starting work so the user can verify it exists on GitHub
+4. **Open a PR** for every branch — no direct merges to main from the terminal without a PR
+5. **Delete the branch** after merging (use `--delete-branch` with `gh pr merge`)
+
+---
+
 ## Repository overview
 
 Monorepo of small apps and scripts built with Claude Code. Each subdirectory is an independent project:
@@ -10,6 +40,8 @@ Monorepo of small apps and scripts built with Claude Code. Each subdirectory is 
 |-----------|-------------|
 | `krysha-snack-planner/` | Next.js app — AI-powered snack planner for a 5-year-old |
 | `krysha-dino-game/` | Next.js app — Snakes & Ladders (dinosaur-themed) board game |
+| `krysha-star-chart/` | Next.js app — behaviour tracker and reward system for a 5-year-old |
+| `BTT_Prep/btt-portal/` | Next.js app — Singapore BTT exam study portal (signs, markings, rules, flashcards) |
 | `organize_downloads.sh` | Bash script — sorts `~/Downloads` into category folders (macOS only) |
 
 ---
