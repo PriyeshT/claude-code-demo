@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect, useMemo } from "react"
 import Image from "next/image"
 import { getAllFlashcardSigns, CATEGORIES, type Sign } from "@/data/signs"
 
@@ -34,7 +34,7 @@ export default function FlashcardsPage() {
   const [score, setScore] = useState({ correct: 0, total: 0 })
   const [started, setStarted] = useState(false)
 
-  const allSigns = getAllFlashcardSigns()
+  const allSigns = useMemo(() => getAllFlashcardSigns(), [])
 
   const buildDeck = useCallback((catId: string) => {
     const filtered = catId === 'all'
